@@ -1,0 +1,29 @@
+{
+    "name": "00f100/fcphp-shttp",
+    "type": "package",
+    "version": "0.1.0",
+    "description": "package security web requests",
+    "keywords": ["package", "security", "web", "requests"],
+    "homepage": "https://github.com/00f100/fcphp-shttp",
+    "authors": [
+        {
+            "name": "João Moraes",
+            "email": "joaomoraesbr@gmail.com",
+            "homepage": "https://github.com/00f100"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "00f100/fcphp-session": "0.*"
+    },
+    "require-dev": {
+        "00f100/phpdbug": "*",
+        "phpunit/phpunit": "6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "FcPhp\\SHttp\\": "src/",
+            "FcPhp\\SHttp\\Test\\": "tests/"
+        }
+    }
+}
