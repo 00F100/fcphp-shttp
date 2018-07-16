@@ -31,23 +31,17 @@ namespace FcPhp\SHttp
          * @param FcPhp\Session\Interfaces\ISession $session Instance of Session
          * @return void
          */
-        public function __construct(array $server, ISession $session)
+        public function __construct(array $post, array $server, ISession $session)
         {
+            $this->authUserPass = $post;
             $this->server = $server;
             $this->session = $session;
         }
 
         public function get() :ISEntity
         {
-            // autenticação server
             $this->authHeader = isset($this->server[self::SHTTP_SERVER_KEY]) ? $this->server[self::SHTTP_SERVER_KEY] : null;
-
-            // autenticação session
             $this->authSession = $this->session->get(self::SHTTP_SESSION_KEY);
-
-            // autenticação usuário e senha
-            $this->authUserPass = $_POST;
-
             return $this->execute();
         }
 

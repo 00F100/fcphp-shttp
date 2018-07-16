@@ -10,12 +10,11 @@ class SHttpUnitTest extends TestCase
 
     public function setUp()
     {
-        $server = [
-
-        ];
+        $server = [];
+        $post = [];
         $session = $this->createMock('FcPhp\Session\Interfaces\ISession');
 
-        $this->instance = new SHttp($server, $session);
+        $this->instance = new SHttp($post, $server, $session);
     }
 
     public function testInstance()
