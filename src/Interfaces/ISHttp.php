@@ -3,8 +3,8 @@
 namespace FcPhp\SHttp\Interfaces
 {
 
-	interface ISHttp
-	{
+    interface ISHttp
+    {
 
-	}
+    }
 }

@@ -6,17 +6,20 @@ use FcPhp\SHttp\Interfaces\ISHttp;
 
 class SHttpUnitTest extends TestCase
 {
-	private $instance;
+    private $instance;
 
-	public function setUp()
-	{
-		$session = $this->createMock('FcPhp\Session\Interfaces\ISession');
+    public function setUp()
+    {
+        $server = [
 
-		$this->instance = new SHttp($session);
-	}
+        ];
+        $session = $this->createMock('FcPhp\Session\Interfaces\ISession');
 
-	public function testInstance()
-	{
-		$this->assertTrue($this->instance instanceof ISHttp);
-	}
+        $this->instance = new SHttp($server, $session);
+    }
+
+    public function testInstance()
+    {
+        $this->assertTrue($this->instance instanceof ISHttp);
+    }
 }

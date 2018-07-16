@@ -14,7 +14,8 @@
     ],
     "require": {
         "php": ">=7.2",
-        "00f100/fcphp-session": "0.*"
+        "00f100/fcphp-session": "0.*",
+        "00f100/array_dot": "0.*"
     },
     "require-dev": {
         "00f100/phpdbug": "*",
