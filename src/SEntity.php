@@ -56,6 +56,29 @@ namespace FcPhp\SHttp
         private $error = [];
 
         /**
+         * @var strint Timestamp created
+         */
+        private $created;
+
+        /**
+         * @var int Timestamp expires
+         */
+        private $expires;
+
+        /**
+         * Method to construct instance of Security Entity
+         *
+         * @param int $expires Timestamp expires Security Entity
+         * @return void
+         */
+        public function __construct(int $expires = 84000)
+        {
+            $this->created = time();
+            $this->expires = $expires;
+            $this->expires = $this->created + $this->expires;
+        }
+
+        /**
          * Method to set Id of login
          *
          * @param string $id Id of login
@@ -261,6 +284,16 @@ namespace FcPhp\SHttp
         public function haveErrors() :bool
         {
             return count($this->error) > 0;
+        }
+
+        /**
+         * Method to check if this Security Entity has expired
+         *
+         * @return bool
+         */
+        public function isExpired() :bool
+        {
+            return ($this->expires < time());
         }
     }
 }

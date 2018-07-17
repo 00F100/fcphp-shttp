@@ -15,6 +15,7 @@ namespace FcPhp\SHttp
          * @var FcPhp\Session\Interfaces\ISession Instance of Session
          */
         private $session;
+        private $entity;
         private $server;
 
         private $authHeader;
@@ -31,11 +32,12 @@ namespace FcPhp\SHttp
          * @param FcPhp\Session\Interfaces\ISession $session Instance of Session
          * @return void
          */
-        public function __construct(array $post, array $server, ISession $session)
+        public function __construct(array $post, array $server, ISession $session, ISEntity $entity)
         {
             $this->authUserPass = $post;
             $this->server = $server;
             $this->session = $session;
+            $this->entity = $entity;
         }
 
         public function get() :ISEntity
@@ -45,11 +47,12 @@ namespace FcPhp\SHttp
             return $this->execute();
         }
 
-        public function callback(string $key, $clousure)
+        public function callback(string $key, $clousure) :ISHttp
         {
-            if(isset($this->{$key})) {
+            if(property_exists($this, $key)) {
                 $this->{$key} = $clousure;
             }
+            return $this;
         }
 
         private function execute() :ISEntity
@@ -72,25 +75,25 @@ namespace FcPhp\SHttp
         private function authHeader() :ISEntity
         {
             $authHeaderCallback = $this->authHeaderCallback;
-            return $authHeaderCallback($this->authHeader);
+            return $authHeaderCallback($this->entity, $this->authHeader);
         }
 
         private function authSession() :ISEntity
         {
             $authSessionCallback = $this->authSessionCallback;
-            return $authSessionCallback($this->authSession);
+            return $authSessionCallback($this->entity, $this->authSession);
         }
 
         private function authUserPass() :ISEntity
         {
             $authUserPassCallback = $this->authUserPassCallback;
-            return $authUserPassCallback($this->authUserPass);
+            return $authUserPassCallback($this->entity, $this->authUserPass);
         }
 
         private function authGuest() :ISEntity
         {
             $authGuestCallback = $this->authGuestCallback;
-            return $authGuestCallback();
+            return $authGuestCallback($this->entity);
         }
     }
 }

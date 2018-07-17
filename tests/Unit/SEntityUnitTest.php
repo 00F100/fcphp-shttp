@@ -99,4 +99,9 @@ class SEntityUnitTest extends TestCase
         $this->instance->setPermissions(['list.all']);
         $this->assertTrue($this->instance->check('list.all'));
     }
+
+    public function testIsExpired()
+    {
+        $this->assertTrue(!$this->instance->isExpired());
+    }
 }

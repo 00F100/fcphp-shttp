@@ -5,6 +5,17 @@ namespace FcPhp\SHttp\Interfaces
 
     interface ISEntity
     {
+
+        /**
+         * Method to construct instance of Security Entity
+         *
+         * @param int $expires Timestamp expires Security Entity
+         * @return void
+         */
+        public function __construct(int $expires = 84000);
+
+
+
         /**
          * Method to set Id of login
          *
@@ -145,5 +156,12 @@ namespace FcPhp\SHttp\Interfaces
          * @return bool
          */
         public function haveErrors() :bool;
+
+        /**
+         * Method to check if this Security Entity has expired
+         *
+         * @return bool
+         */
+        public function isExpired() :bool;
     }
 }
