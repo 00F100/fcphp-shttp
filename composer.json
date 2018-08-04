@@ -1,7 +1,7 @@
 {
     "name": "00f100/fcphp-shttp",
     "type": "package",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "package security web requests",
     "keywords": ["package", "security", "web", "requests"],
     "homepage": "https://github.com/00f100/fcphp-shttp",
